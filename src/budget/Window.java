@@ -9,6 +9,7 @@ import java.awt.Color;
 public class Window extends javax.swing.JFrame {
     FileRead file = new FileRead();
     float balance;
+    String money;
     /**
      * Creates new form Window
      */
@@ -27,18 +28,22 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         txtTransference = new javax.swing.JTextField();
         btnPayed = new javax.swing.JButton();
         btnSpent = new javax.swing.JButton();
         txtBalance = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnBalance = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         txtTransference.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
-        getContentPane().add(txtTransference, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 322, 72));
+        jPanel1.add(txtTransference, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 322, 72));
 
         btnPayed.setText("Pagado");
         btnPayed.addActionListener(new java.awt.event.ActionListener() {
@@ -46,7 +51,7 @@ public class Window extends javax.swing.JFrame {
                 btnPayedActionPerformed(evt);
             }
         });
-        getContentPane().add(btnPayed, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 48, 80, -1));
+        jPanel1.add(btnPayed, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 80, -1));
 
         btnSpent.setText("Gastado");
         btnSpent.addActionListener(new java.awt.event.ActionListener() {
@@ -54,23 +59,35 @@ public class Window extends javax.swing.JFrame {
                 btnSpentActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 88, 80, -1));
+        jPanel1.add(btnSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 80, -1));
 
         txtBalance.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
-        getContentPane().add(txtBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 430, 95));
+        jPanel1.add(txtBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 430, 95));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Saldo:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 94, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 94, 30));
 
-        jButton1.setText("Saldo");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 80, -1));
+        btnBalance.setText("Saldo");
+        btnBalance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBalanceActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 80, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPayedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayedActionPerformed
-        balance = file.pay(txtTransference.getText());
+        if(txtTransference.getText() == null){
+            money = "0";
+        }else{
+            money = txtTransference.getText();
+        }
+        balance = file.pay(money);
         if (balance < 0) {
             txtBalance.setForeground(Color.RED);
         }else if(balance > 0){
@@ -82,8 +99,33 @@ public class Window extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPayedActionPerformed
 
     private void btnSpentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpentActionPerformed
-        // TODO add your handling code here:
+        if(txtTransference.getText() == null){
+            money = "0";
+        }else{
+            money = txtTransference.getText();
+        }
+        balance = file.spent(money);
+        if (balance < 0) {
+            txtBalance.setForeground(Color.RED);
+        }else if(balance > 0){
+            txtBalance.setForeground(Color.GREEN);
+        }else{
+            txtBalance.setForeground(Color.WHITE);
+        }
+        txtBalance.setText("$" + balance);
     }//GEN-LAST:event_btnSpentActionPerformed
+
+    private void btnBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanceActionPerformed
+        balance = file.getFinalBalance();
+        if (balance < 0) {
+            txtBalance.setForeground(Color.RED);
+        }else if(balance > 0){
+            txtBalance.setForeground(Color.GREEN);
+        }else{
+            txtBalance.setForeground(Color.WHITE);
+        }
+        txtBalance.setText("$"+balance);
+    }//GEN-LAST:event_btnBalanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,10 +163,11 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBalance;
     private javax.swing.JButton btnPayed;
     private javax.swing.JButton btnSpent;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel txtBalance;
     private javax.swing.JTextField txtTransference;
     // End of variables declaration//GEN-END:variables
