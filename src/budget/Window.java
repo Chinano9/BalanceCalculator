@@ -1,22 +1,24 @@
-
 package budget;
 
-//<editor-fold defaultstate="collapsed" desc="Imports">
 import java.awt.Color;
-
-//</editor-fold>
+import javax.swing.ImageIcon;
 
 public class Window extends javax.swing.JFrame {
     FileRead file = new FileRead();
     float balance;
     String money;
+    
+    private static final ImageIcon icon = new ImageIcon(Window.class.getResource("/icon/Money.png"));
+    //Iconos diseñados por https://www.freepik.com
     /**
      * Creates new form Window
      */
     public Window() {
         initComponents();
+        setTitle("Saving Budget");
         setLocationRelativeTo(null);
         setResizable(false);
+        setIconImage(icon.getImage());
     }
 
     /**
@@ -35,39 +37,50 @@ public class Window extends javax.swing.JFrame {
         txtBalance = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnBalance = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(248, 243, 212));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtTransference.setBackground(new java.awt.Color(255, 222, 125));
         txtTransference.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
+        txtTransference.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.add(txtTransference, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 322, 72));
 
+        btnPayed.setBackground(new java.awt.Color(0, 184, 169));
+        btnPayed.setForeground(new java.awt.Color(255, 255, 255));
         btnPayed.setText("Pagado");
         btnPayed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPayedActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPayed, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 80, -1));
+        jPanel1.add(btnPayed, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 80, 40));
 
+        btnSpent.setBackground(new java.awt.Color(246, 65, 108));
+        btnSpent.setForeground(new java.awt.Color(255, 255, 255));
         btnSpent.setText("Gastado");
         btnSpent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSpentActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 80, -1));
+        jPanel1.add(btnSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 80, 40));
 
         txtBalance.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         jPanel1.add(txtBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 430, 95));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Saldo:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 94, 30));
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Ingreso/gasto:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 30));
 
+        btnBalance.setBackground(new java.awt.Color(255, 222, 125));
+        btnBalance.setForeground(new java.awt.Color(51, 51, 51));
         btnBalance.setText("Saldo");
         btnBalance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +88,12 @@ public class Window extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 80, -1));
+
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("Saldo:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 94, 30));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 120, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
 
@@ -167,7 +186,9 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JButton btnPayed;
     private javax.swing.JButton btnSpent;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel txtBalance;
     private javax.swing.JTextField txtTransference;
     // End of variables declaration//GEN-END:variables
