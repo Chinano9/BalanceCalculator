@@ -6,7 +6,7 @@
             <name>Budget</name>
             <source-roots>
                 <root id="src.dir"/>
-                <root id="src.res.dir" name="Resources packages"/>
+                <root id="src.res.dir" name="Resources Packages"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>

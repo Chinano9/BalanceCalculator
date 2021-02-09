@@ -8,6 +8,9 @@ public class Window extends javax.swing.JFrame {
     float balance;
     String money;
     
+    final Color POSITIVE = new Color(5, 0, 255);
+    final Color NEGATIVE = new Color(190, 6, 17);
+    
     private static final ImageIcon icon = new ImageIcon(Window.class.getResource("/icon/Money.png"));
     //Iconos diseñados por https://www.freepik.com
     /**
@@ -30,77 +33,128 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        baseText = new javax.swing.JPanel();
         txtTransference = new javax.swing.JTextField();
-        btnPayed = new javax.swing.JButton();
-        btnSpent = new javax.swing.JButton();
+        btnPayed = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         txtBalance = new javax.swing.JLabel();
+        btnSpent = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnBalance = new javax.swing.JButton();
+        btnBalance = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(248, 243, 212));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        baseText.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(baseText, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 107, 250, 4));
 
-        txtTransference.setBackground(new java.awt.Color(255, 222, 125));
-        txtTransference.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
-        txtTransference.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel1.add(txtTransference, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 322, 72));
-
-        btnPayed.setBackground(new java.awt.Color(0, 184, 169));
-        btnPayed.setForeground(new java.awt.Color(255, 255, 255));
-        btnPayed.setText("Pagado");
-        btnPayed.addActionListener(new java.awt.event.ActionListener() {
+        txtTransference.setBackground(new java.awt.Color(57, 86, 240));
+        txtTransference.setFont(new java.awt.Font("Roboto", 0, 64)); // NOI18N
+        txtTransference.setForeground(new java.awt.Color(255, 255, 255));
+        txtTransference.setBorder(null);
+        txtTransference.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPayedActionPerformed(evt);
+                txtTransferenceActionPerformed(evt);
             }
         });
-        jPanel1.add(btnPayed, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 80, 40));
+        getContentPane().add(txtTransference, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 250, 60));
 
-        btnSpent.setBackground(new java.awt.Color(246, 65, 108));
-        btnSpent.setForeground(new java.awt.Color(255, 255, 255));
-        btnSpent.setText("Gastado");
-        btnSpent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSpentActionPerformed(evt);
+        btnPayed.setBackground(new java.awt.Color(109, 255, 229));
+        btnPayed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPayedMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPayedMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPayedMouseExited(evt);
             }
         });
-        jPanel1.add(btnSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 80, 40));
+        btnPayed.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtBalance.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
-        jPanel1.add(txtBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 430, 95));
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 47, 243));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Pagado");
+        btnPayed.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 30));
 
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("Ingreso/gasto:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 130, 30));
+        getContentPane().add(btnPayed, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 100, 30));
 
-        btnBalance.setBackground(new java.awt.Color(255, 222, 125));
-        btnBalance.setForeground(new java.awt.Color(51, 51, 51));
-        btnBalance.setText("Saldo");
-        btnBalance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBalanceActionPerformed(evt);
+        txtBalance.setFont(new java.awt.Font("Roboto", 1, 96)); // NOI18N
+        getContentPane().add(txtBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 400, 100));
+
+        btnSpent.setBackground(new java.awt.Color(0, 39, 249));
+        btnSpent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSpentMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSpentMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSpentMouseExited(evt);
             }
         });
-        jPanel1.add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 80, -1));
+        btnSpent.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Gastado");
+        btnSpent.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 30));
+
+        getContentPane().add(btnSpent, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 100, 30));
+
+        btnBalance.setBackground(new java.awt.Color(255, 255, 255));
+        btnBalance.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBalanceMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBalanceMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBalanceMouseExited(evt);
+            }
+        });
+        btnBalance.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 47, 243));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Ver Saldo");
+        btnBalance.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 30));
+
+        getContentPane().add(btnBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 100, 30));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Saldo:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 151, 94, 30));
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 120, 50));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 225, 94, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background/Background.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPayedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayedActionPerformed
+    private void txtTransferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTransferenceActionPerformed
+    }//GEN-LAST:event_txtTransferenceActionPerformed
+
+    private void btnPayedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPayedMouseEntered
+        btnPayed.setBackground(new Color(0, 230, 230));
+    }//GEN-LAST:event_btnPayedMouseEntered
+
+    private void btnPayedMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPayedMouseExited
+        btnPayed.setBackground(new Color(109, 255, 229));
+    }//GEN-LAST:event_btnPayedMouseExited
+
+    private void btnPayedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPayedMouseClicked
         if(txtTransference.getText() == null){
             money = "0";
         }else{
@@ -108,16 +162,24 @@ public class Window extends javax.swing.JFrame {
         }
         balance = file.pay(money);
         if (balance < 0) {
-            txtBalance.setForeground(Color.RED);
+            txtBalance.setForeground(NEGATIVE);
         }else if(balance > 0){
-            txtBalance.setForeground(Color.GREEN);
+            txtBalance.setForeground(POSITIVE);
         }else{
-            txtBalance.setForeground(Color.WHITE);
+            txtBalance.setForeground(NEGATIVE);
         }
         txtBalance.setText("$" + balance);
-    }//GEN-LAST:event_btnPayedActionPerformed
+    }//GEN-LAST:event_btnPayedMouseClicked
 
-    private void btnSpentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpentActionPerformed
+    private void btnSpentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSpentMouseEntered
+        btnSpent.setBackground(new Color(0, 39, 200));
+    }//GEN-LAST:event_btnSpentMouseEntered
+
+    private void btnSpentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSpentMouseExited
+        btnSpent.setBackground(new Color(0,39,249));
+    }//GEN-LAST:event_btnSpentMouseExited
+
+    private void btnSpentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSpentMouseClicked
         if(txtTransference.getText() == null){
             money = "0";
         }else{
@@ -125,26 +187,34 @@ public class Window extends javax.swing.JFrame {
         }
         balance = file.spent(money);
         if (balance < 0) {
-            txtBalance.setForeground(Color.RED);
+            txtBalance.setForeground(NEGATIVE);
         }else if(balance > 0){
-            txtBalance.setForeground(Color.GREEN);
+            txtBalance.setForeground(POSITIVE);
         }else{
-            txtBalance.setForeground(Color.WHITE);
+            txtBalance.setForeground(NEGATIVE);
         }
         txtBalance.setText("$" + balance);
-    }//GEN-LAST:event_btnSpentActionPerformed
+    }//GEN-LAST:event_btnSpentMouseClicked
 
-    private void btnBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBalanceActionPerformed
+    private void btnBalanceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBalanceMouseEntered
+        btnBalance.setBackground(new Color(230, 230, 230));
+    }//GEN-LAST:event_btnBalanceMouseEntered
+
+    private void btnBalanceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBalanceMouseExited
+        btnBalance.setBackground(Color.WHITE);
+    }//GEN-LAST:event_btnBalanceMouseExited
+
+    private void btnBalanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBalanceMouseClicked
         balance = file.getFinalBalance();
         if (balance < 0) {
-            txtBalance.setForeground(Color.RED);
+            txtBalance.setForeground(NEGATIVE);
         }else if(balance > 0){
-            txtBalance.setForeground(Color.GREEN);
+            txtBalance.setForeground(POSITIVE);
         }else{
-            txtBalance.setForeground(Color.WHITE);
+            txtBalance.setForeground(NEGATIVE);
         }
         txtBalance.setText("$"+balance);
-    }//GEN-LAST:event_btnBalanceActionPerformed
+    }//GEN-LAST:event_btnBalanceMouseClicked
 
     /**
      * @param args the command line arguments
@@ -182,13 +252,15 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBalance;
-    private javax.swing.JButton btnPayed;
-    private javax.swing.JButton btnSpent;
+    private javax.swing.JPanel baseText;
+    private javax.swing.JPanel btnBalance;
+    private javax.swing.JPanel btnPayed;
+    private javax.swing.JPanel btnSpent;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel txtBalance;
     private javax.swing.JTextField txtTransference;
     // End of variables declaration//GEN-END:variables
