@@ -11,7 +11,6 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,14 +19,9 @@ import javax.swing.JOptionPane;
 public class FileRead {
 
     //<editor-fold defaultstate="collapsed" desc="Variabe and Constants Initializacion">
-    final private String PATH = "C:\\Users\\EliteBook\\OneDrive\\Documentos\\Balance",
-            FILE_BALANCE_NAME = "\\Balance.txt",
-            FILE_HISTORY_NAME = "\\Balance_History.txt";
-    File dir = new File(PATH),
-            balance = new File(PATH + FILE_BALANCE_NAME),
-            history = new File(PATH + FILE_HISTORY_NAME);
-    BufferedWriter bufferedWriterBalance,
-            bufferedWriterHistory;
+    final private String PATH = "C:\\Users\\EliteBook\\OneDrive\\Documentos\\Balance",FILE_BALANCE_NAME = "\\Balance.txt",FILE_HISTORY_NAME = "\\Balance_History.txt";
+    File dir = new File(PATH),balance = new File(PATH + FILE_BALANCE_NAME),history = new File(PATH + FILE_HISTORY_NAME);
+    BufferedWriter bufferedWriterBalance,bufferedWriterHistory;
     BufferedReader bufferedReader;
     Calendar calendar = new GregorianCalendar();
     private float finalBalance = 0;

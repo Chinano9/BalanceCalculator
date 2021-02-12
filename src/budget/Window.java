@@ -3,19 +3,29 @@ package budget;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
+/**
+ * @author Fernando Ponce Soís
+ */
+
 public class Window extends javax.swing.JFrame {
-    FileRead file = new FileRead();
+    //<editor-fold defaultstate="collapsed" desc="Variabe and Constants Initialization/Declaration">
     float balance;
     String money;
     
+    final FileRead file = new FileRead();
     final Color POSITIVE = new Color(5, 0, 255);
     final Color NEGATIVE = new Color(190, 6, 17);
     
     private static final ImageIcon icon = new ImageIcon(Window.class.getResource("/icon/Money.png"));
-    //Iconos diseñados por https://www.freepik.com
+        //Iconos diseñados por https://www.freepik.com
+    //</editor-fold>
+  
+    
     /**
      * Creates new form Window
      */
+ 
+    
     public Window() {
         initComponents();
         setTitle("Saving Budget");
@@ -34,6 +44,10 @@ public class Window extends javax.swing.JFrame {
     private void initComponents() {
 
         baseText = new javax.swing.JPanel();
+        btnMenu = new javax.swing.JPanel();
+        rect = new javax.swing.JPanel();
+        rect2 = new javax.swing.JPanel();
+        rect3 = new javax.swing.JPanel();
         txtTransference = new javax.swing.JTextField();
         btnPayed = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -44,12 +58,38 @@ public class Window extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         baseText.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(baseText, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 107, 250, 4));
+
+        btnMenu.setBackground(new java.awt.Color(57, 86, 240));
+        btnMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMenuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMenuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMenuMouseExited(evt);
+            }
+        });
+        btnMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        rect.setBackground(new java.awt.Color(255, 255, 255));
+        btnMenu.add(rect, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 30, 7));
+
+        rect2.setBackground(new java.awt.Color(255, 255, 255));
+        btnMenu.add(rect2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 7));
+
+        rect3.setBackground(new java.awt.Color(255, 255, 255));
+        btnMenu.add(rect3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 30, 7));
+
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 11, 30, 27));
 
         txtTransference.setBackground(new java.awt.Color(57, 86, 240));
         txtTransference.setFont(new java.awt.Font("Roboto", 0, 64)); // NOI18N
@@ -139,13 +179,14 @@ public class Window extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/background/Background.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 400));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtTransferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTransferenceActionPerformed
     }//GEN-LAST:event_txtTransferenceActionPerformed
-
+    
     private void btnPayedMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPayedMouseEntered
         btnPayed.setBackground(new Color(0, 230, 230));
     }//GEN-LAST:event_btnPayedMouseEntered
@@ -216,9 +257,25 @@ public class Window extends javax.swing.JFrame {
         txtBalance.setText("$"+balance);
     }//GEN-LAST:event_btnBalanceMouseClicked
 
+    private void btnMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseEntered
+        rect.setBackground(new Color(230, 230, 230));
+        rect2.setBackground(new Color(230, 230, 230));
+        rect3.setBackground(new Color(230, 230, 230));
+    }//GEN-LAST:event_btnMenuMouseEntered
+
+    private void btnMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseExited
+        rect.setBackground(Color.WHITE);
+        rect2.setBackground(Color.WHITE);
+        rect3.setBackground(Color.WHITE);
+    }//GEN-LAST:event_btnMenuMouseExited
+
+    private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseClicked
+    }//GEN-LAST:event_btnMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -254,6 +311,7 @@ public class Window extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel baseText;
     private javax.swing.JPanel btnBalance;
+    private javax.swing.JPanel btnMenu;
     private javax.swing.JPanel btnPayed;
     private javax.swing.JPanel btnSpent;
     private javax.swing.JLabel jLabel1;
@@ -261,6 +319,10 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel rect;
+    private javax.swing.JPanel rect2;
+    private javax.swing.JPanel rect3;
     private javax.swing.JLabel txtBalance;
     private javax.swing.JTextField txtTransference;
     // End of variables declaration//GEN-END:variables
