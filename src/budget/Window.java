@@ -28,7 +28,6 @@ public class Window extends javax.swing.JFrame {
     
     public Window() {
         initComponents();
-        setTitle("Saving Budget");
         setLocationRelativeTo(null);
         setResizable(false);
         setIconImage(icon.getImage());
@@ -61,6 +60,7 @@ public class Window extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Saving Budget");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         baseText.setBackground(new java.awt.Color(255, 255, 255));
